@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ERDiagram version="1.1">
+  <Connection session="PigeonDriver" database="dsdatabase" />
+  <Drawing gridVisible="false" snapOn="false" fastRouting="false" labelsVisible="true" />
+  <Tables>
+    <Table name="administrator">
+      <Drawing expanded="true" location="961,0" dimensions="215,129" />
+      <Columns>
+        <Column name="id" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="int" size="10" />
+        </Column>
+        <Column name="account" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="varchar" size="32" />
+        </Column>
+        <Column name="password" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="varchar" size="32" />
+        </Column>
+        <Column name="remark" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="varchar" size="256" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="cart">
+      <Drawing expanded="true" location="135,23" dimensions="225,175" />
+      <Columns>
+        <Column name="id" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="int" size="10" />
+        </Column>
+        <Column name="user" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="int" size="10" />
+        </Column>
+        <Column name="store" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="int" size="10" />
+        </Column>
+        <Column name="product" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="int" size="10" />
+        </Column>
+        <Column name="price" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="double" size="22" />
+        </Column>
+        <Column name="buyNumber" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="int" size="10" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="orderform">
+      <Drawing expanded="true" location="468,0" dimensions="258,221" />
+      <Columns>
+        <Column name="id" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="int" size="10" />
+        </Column>
+        <Column name="buyer" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="int" size="10" />
+        </Column>
+        <Column name="seller" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="int" size="10" />
+        </Column>
+        <Column name="product" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="int" size="10" />
+        </Column>
+        <Column name="buyNumber" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="int" size="10" />
+        </Column>
+        <Column name="moneyAmount" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="double" size="22" />
+        </Column>
+        <Column name="state" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="enum" size="8" />
+        </Column>
+        <Column name="remark" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="varchar" size="256" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="product">
+      <Drawing expanded="true" location="633,401" dimensions="283,290" />
+      <Columns>
+        <Column name="id" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="int" size="10" />
+        </Column>
+        <Column name="name" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="varchar" size="32" />
+        </Column>
+        <Column name="productClass" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="int" size="10" />
+        </Column>
+        <Column name="productType" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="int" size="10" />
+        </Column>
+        <Column name="remainingNumber" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="int" size="10" />
+        </Column>
+        <Column name="price" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="double" size="22" />
+        </Column>
+        <Column name="introduction" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="varchar" size="128" />
+        </Column>
+        <Column name="picture" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="varchar" size="256" />
+        </Column>
+        <Column name="belongStore" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="int" size="10" />
+        </Column>
+        <Column name="state" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="enum" size="9" />
+        </Column>
+        <Column name="remark" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="varchar" size="256" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="productclass">
+      <Drawing expanded="true" location="660,1020" dimensions="224,106" />
+      <Columns>
+        <Column name="id" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="int" size="10" />
+        </Column>
+        <Column name="className" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="varchar" size="32" />
+        </Column>
+        <Column name="remark" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="varchar" size="256" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="producttype">
+      <Drawing expanded="true" location="592,791" dimensions="223,129" />
+      <Columns>
+        <Column name="id" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="int" size="10" />
+        </Column>
+        <Column name="typeName" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="varchar" size="32" />
+        </Column>
+        <Column name="class" primary_key="false" foreign_key="true" required="true" unique="false">
+          <Data type="int" size="10" />
+        </Column>
+        <Column name="remark" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="varchar" size="256" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="store">
+      <Drawing expanded="true" location="0,447" dimensions="215,198" />
+      <Columns>
+        <Column name="id" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="int" size="10" />
+        </Column>
+        <Column name="account" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="varchar" size="32" />
+        </Column>
+        <Column name="name" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="varchar" size="32" />
+        </Column>
+        <Column name="password" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="varchar" size="32" />
+        </Column>
+        <Column name="email" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="varchar" size="64" />
+        </Column>
+        <Column name="phone" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="varchar" size="16" />
+        </Column>
+        <Column name="remark" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="varchar" size="256" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="user">
+      <Drawing expanded="true" location="315,458" dimensions="218,175" />
+      <Columns>
+        <Column name="id" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="int" size="10" />
+        </Column>
+        <Column name="username" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="varchar" size="32" />
+        </Column>
+        <Column name="password" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="varchar" size="32" />
+        </Column>
+        <Column name="email" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="varchar" size="64" />
+        </Column>
+        <Column name="phone" primary_key="false" foreign_key="false" required="true" unique="false">
+          <Data type="varchar" size="16" />
+        </Column>
+        <Column name="remark" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="varchar" size="256" />
+        </Column>
+      </Columns>
+    </Table>
+  </Tables>
+  <Relationships>
+    <Relationship name="cart_ibfk_2">
+      <Details primary_table="store" foreign_table="cart">
+        <PrimaryKeys>
+          <ColumnName name="id" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="store" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="cart_ibfk_3">
+      <Details primary_table="product" foreign_table="cart">
+        <PrimaryKeys>
+          <ColumnName name="id" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="product" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="cart_ibfk_1">
+      <Details primary_table="user" foreign_table="cart">
+        <PrimaryKeys>
+          <ColumnName name="id" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="user" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="orderform_ibfk_1">
+      <Details primary_table="user" foreign_table="orderform">
+        <PrimaryKeys>
+          <ColumnName name="id" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="buyer" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="orderform_ibfk_3">
+      <Details primary_table="product" foreign_table="orderform">
+        <PrimaryKeys>
+          <ColumnName name="id" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="product" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="orderform_ibfk_2">
+      <Details primary_table="store" foreign_table="orderform">
+        <PrimaryKeys>
+          <ColumnName name="id" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="seller" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="product_ibfk_1">
+      <Details primary_table="productclass" foreign_table="product">
+        <PrimaryKeys>
+          <ColumnName name="id" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="productClass" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="product_ibfk_2">
+      <Details primary_table="producttype" foreign_table="product">
+        <PrimaryKeys>
+          <ColumnName name="id" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="productType" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+    <Relationship name="producttype_ibfk_1">
+      <Details primary_table="productclass" foreign_table="producttype">
+        <PrimaryKeys>
+          <ColumnName name="id" />
+        </PrimaryKeys>
+        <ForeignKeys>
+          <ColumnName name="class" />
+        </ForeignKeys>
+      </Details>
+      <Drawing routingType="0" />
+    </Relationship>
+  </Relationships>
+</ERDiagram>
+

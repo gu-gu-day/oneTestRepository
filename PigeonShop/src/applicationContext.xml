@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www/sprameframework.org/schema/aop
+	http://www/sprameframework.org/schema/aop/spring-aop.xsd
+	http://www/sprameframework.org/schema/context
+	http://www/sprameframework.org/schema/context/spring-context.xsd"
+	>
+	<!-- xmlns:p="http://www.springframework.org/schema/p" -->
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://localhost:3306/dsdatabase">
+		</property>
+		<property name="username" value="root"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">
+					true
+				</prop>
+				<prop key="hibernate.format_sql">
+					true
+				</prop>
+				<prop key="hibernate.connection.autocommit">
+					false
+				</prop>
+				<prop key="hibernate.hbm2ddl.auto">
+					update
+				</prop>
+			</props>
+		</property>
+		<!-- 映射配置 -->
+		<property name="mappingResources">
+			<list>
+				<value>com/pigeon/shop/entity/Administrator.hbm.xml</value>
+				<value>com/pigeon/shop/entity/User.hbm.xml</value>
+				<value>com/pigeon/shop/entity/Store.hbm.xml</value>
+				<value>com/pigeon/shop/entity/Product.hbm.xml</value>
+				<value>com/pigeon/shop/entity/Cart.hbm.xml</value>
+				<value>com/pigeon/shop/entity/Orderform.hbm.xml</value>
+				<value>com/pigeon/shop/entity/Productclass.hbm.xml</value>
+				<value>com/pigeon/shop/entity/Producttype.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 开启注解事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!-- action -->
+	
+	<!-- 首页action -->
+	<bean id="indexAction" class="com.pigeon.shop.action.IndexAction" scope="prototype">
+		<property name="productService" ref="ProductService"/>
+		<property name="productclassService" ref="ProductclassService"/>
+		<property name="producttypeService" ref="ProducttypeService"/>
+	</bean>
+	<!-- 用户action -->
+	<bean id="userAction" class="com.pigeon.shop.action.UserAction" scope="prototype">
+		<property name="userService" ref="UserService"/>
+	</bean>
+	<!-- 企业action -->
+	<bean id="storeAction" class="com.pigeon.shop.action.StoreAction" scope="prototype">
+		<property name="storeService" ref="StoreService"/>
+		<property name="productService" ref="ProductService"/>
+		<property name="productclassService" ref="ProductclassService"/>
+		<property name="producttypeService" ref="ProducttypeService"/>
+	</bean>
+	<!-- 管理员action -->
+	<bean id="administratorAction" class="com.pigeon.shop.action.AdministratorAction" scope="prototype">
+		<property name="administratorService" ref="AdministratorService"/>
+		<property name="productService" ref="ProductService"/>
+		<property name="productclassService" ref="ProductclassService"/>
+		<property name="producttypeService" ref="ProducttypeService"/>
+	</bean>
+	<!-- 购物车action -->
+	<bean id="cartAction" class="com.pigeon.shop.action.CartAction" scope="prototype">
+		<property name="cartService" ref="CartService"/>
+		<property name="productService" ref="ProductService"/>
+	</bean>
+	<!-- 商品action -->
+	<bean id="productAction" class="com.pigeon.shop.action.ProductAction" scope="prototype">
+		<property name="productService" ref="ProductService"/>
+		<property name="productclassService" ref="ProductclassService"/>
+		<property name="producttypeService" ref="ProducttypeService"/>
+	</bean>
+	<!-- 商品类action -->
+	<bean id="productclassAction" class="com.pigeon.shop.action.ProductclassAction" scope="prototype">
+		<property name="productclassService" ref="ProductclassService"/>
+	</bean>
+	<!-- 商品种action -->
+	<bean id="producttypeAction" class="com.pigeon.shop.action.ProducttypeAction" scope="prototype">
+		<property name="producttypeService" ref="ProducttypeService"/>
+	</bean>
+	<!-- 订单action -->
+	<bean id="orderformAction" class="com.pigeon.shop.action.OrderformAction" scope="prototype">
+		<property name="orderformService" ref="OrderformService"/>
+		<property name="productService" ref="ProductService"/>
+		<property name="storeService" ref="StoreService"/>
+	</bean>
+	
+	
+	<!-- service -->
+	
+	<bean id="UserService" class="com.pigeon.shop.service.UserService">
+		<property name="dao" ref="userDao"/>
+	</bean>
+	
+	<bean id="StoreService" class="com.pigeon.shop.service.StoreService">
+		<property name="dao" ref="storeDao"/>
+	</bean>
+	
+	<bean id="AdministratorService" class="com.pigeon.shop.service.AdministratorService">
+		<property name="dao" ref="administratorDao"/>
+	</bean>
+	
+	<bean id="CartService" class="com.pigeon.shop.service.CartService">
+		<property name="dao" ref="cartDao"/>
+	</bean>
+	
+	<bean id="ProductService" class="com.pigeon.shop.service.ProductService">
+		<property name="dao" ref="productDao"/>
+	</bean>
+	
+	<bean id="OrderformService" class="com.pigeon.shop.service.OrderformService">
+		<property name="dao" ref="orderformDao"/>
+	</bean>
+	
+	<bean id="ProductclassService" class="com.pigeon.shop.service.ProductclassService">
+		<property name="dao" ref="productclassDao"/>
+	</bean>
+	
+	<bean id="ProducttypeService" class="com.pigeon.shop.service.ProducttypeService">
+		<property name="dao" ref="producttypeDao"/>
+	</bean>
+	
+	<!-- dao -->
+	
+	<bean id="userDao" class="com.pigeon.shop.dao.UserDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="storeDao" class="com.pigeon.shop.dao.StoreDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="administratorDao" class="com.pigeon.shop.dao.AdministratorDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="productDao" class="com.pigeon.shop.dao.ProductDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="productclassDao" class="com.pigeon.shop.dao.ProductclassDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="producttypeDao" class="com.pigeon.shop.dao.ProducttypeDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="cartDao" class="com.pigeon.shop.dao.CartDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="orderformDao" class="com.pigeon.shop.dao.OrderformDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	</beans>
+	

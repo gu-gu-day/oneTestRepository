@@ -1,0 +1,10 @@
+#Thu Jun 03 22:36:43 CST 2021
+TOMCAT_HOME=C\:\\Users\\24148\\Desktop\\apache-tomcat\\apache-tomcat-7.0.100
+TOMCAT_TEMP=C\:\\Users\\24148\\Desktop\\apache-tomcat\\apache-tomcat-7.0.100\\temp
+LIBRARY_PATH="D\:\\myeclipse\\Common\\binary\\com.sun.java.jdk.win32.x86_64_1.6.0.013\\bin;C\:\\Users\\24148\\Desktop\\apache-tomcat\\apache-tomcat-7.0.100\\bin"
+TOMCAT_BASE=C\:\\Users\\24148\\Desktop\\apache-tomcat\\apache-tomcat-7.0.100
+ENDORSED_DIRS="C\:\\Users\\24148\\Desktop\\apache-tomcat\\apache-tomcat-7.0.100/common/endorsed"
+eclipse.preferences.version=1
+JDK_HOME=D\:\\myeclipse\\Common\\binary\\com.sun.java.jdk.win32.x86_64_1.6.0.013
+OPT_VM_ARGS=-XX\:PermSize\=256M -XX\:MaxPermSize\=1024M\r\n\r\n-Xms1024m -Xmx1024m
+SERVER_ENABLEMENT=true
