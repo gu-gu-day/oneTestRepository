@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-  <public publicId="http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd" uri="file:///C:/Users/24148/Desktop/all/新建文件夹/collect/jar/xwork-validator-1.0.3.dtd"/>
-  <public publicId="http://struts.apache.org/dtds/struts-2.1.dtd" uri="file:///C:/Users/24148/Desktop/all/新建文件夹/collect/jar/struts-2.1.dtd"/>
-</catalog>

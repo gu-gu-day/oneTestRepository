@@ -1,5 +1,0 @@
-INDEX VERSION 1.126
-C:\Users\24148\Desktop\guguday\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3232035726.index
-\PigeonShop\src
-C:\Users\24148\Desktop\guguday\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3690516077.index
-\PigeonShop\src
